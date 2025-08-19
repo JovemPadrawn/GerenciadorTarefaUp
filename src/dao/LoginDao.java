@@ -15,8 +15,8 @@ public class LoginDao {
         return lista;
     }
 
-    public void inserirLogin(Login login){
-        lista.add(login);
+    public boolean inserirLogin(Login login){
+        return lista.add(login);
     }
 
     public void listar(){

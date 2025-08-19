@@ -2,6 +2,7 @@ import dao.LoginDao;
 import model.Login;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,8 +14,13 @@ public class FormCadastroLogin extends JFrame{
     private JTextField TF_Email;
     private JButton cadastrarButton;
     private JButton listarButton;
+    private JTable table1;
 
     LoginDao loginDao;
+
+    String[] colunas = {"ID", "NOME", "E-MAIL", "DATA CADASTRO", "DATA ATUALIZAÇÂO"};
+
+    DefaultTableModel model = new DefaultTableModel(colunas, 0);
 
     public FormCadastroLogin() {
         setContentPane(Principal);
@@ -23,6 +29,8 @@ public class FormCadastroLogin extends JFrame{
         setSize(400, 400);
         setLocationRelativeTo(null);
         setVisible(true);
+
+        table1.setModel(model);
 
         loginDao = new LoginDao();
 
@@ -37,14 +45,30 @@ public class FormCadastroLogin extends JFrame{
                 String dataAtualizacao= "";
 
                 Login login = new Login(nome, email, senha, dataCadastro, dataAtualizacao);
-                loginDao.inserirLogin(login);
-               // loginDao.inserirLogin(new Login(nome, email, senha, dataCadastro, dataAtualizacao));
+                if(loginDao.inserirLogin(login)){
+                    JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar usuario!");
+                }
 
-                System.out.println(loginDao.getLista());
+            }
+        });
+        listarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //System.out.println(loginDao.getLista());
 
-                /*System.out.println("Nome: " + TF_Nome.getText());
-                System.out.println("E-mail: " + TF_Email.getText());
-                System.out.println("Senha: " + TF_Senha.getText());*/
+                model.setRowCount(0);
+                for (Login l : loginDao.getLista()){
+                    Object[] linha = {
+                            l.getId(),
+                            l.getNome(),
+                            l.getEmail(),
+                            l.getDataCadastro(),
+                            l.getDataAtualizacao()
+                    };
+                    model.addRow(linha);
+                }
             }
         });
     }
