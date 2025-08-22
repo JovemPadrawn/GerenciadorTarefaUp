@@ -1,14 +1,17 @@
+import dao.CarrosDao;
 import dao.LoginDao;
-import model.Login;
-import java.util.Scanner;
 
 public class Main {
 
      static LoginDao loginDao = new LoginDao();
+     static CarrosDao carrosDao = new CarrosDao();
 
     public static void main(String[] args) {
-        FormCadastroLogin formCadastroLogin = new FormCadastroLogin();
-        formCadastroLogin.setVisible(true);
+        //FormCadastroLogin formCadastroLogin = new FormCadastroLogin();
+        //formCadastroLogin.setVisible(true);
+
+        FormCadastroCarro formCadastroCarro = new FormCadastroCarro();
+        formCadastroCarro.setVisible(true);
 
         /*Scanner scan = new Scanner(System.in);
 

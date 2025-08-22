@@ -1,11 +1,10 @@
 import dao.LoginDao;
-import model.Login;
+import modelo.Login;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class FormCadastroLogin extends JFrame{
     private JPanel Principal;

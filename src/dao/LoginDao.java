@@ -1,6 +1,6 @@
 package dao;
 
-import model.Login;
+import modelo.Login;
 
 import java.util.ArrayList;
 
