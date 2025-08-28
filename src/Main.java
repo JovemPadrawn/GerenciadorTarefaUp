@@ -1,21 +1,24 @@
 import dao.CarrosDao;
 import dao.LoginDao;
+import modelo.Login;
+
+import java.util.Scanner;
 
 public class Main {
 
-     static LoginDao loginDao = new LoginDao();
-     static CarrosDao carrosDao = new CarrosDao();
+    static LoginDao loginDao = new LoginDao();
+    static CarrosDao carrosDao = new CarrosDao();
 
     public static void main(String[] args) {
         //FormCadastroLogin formCadastroLogin = new FormCadastroLogin();
         //formCadastroLogin.setVisible(true);
 
-        FormCadastroCarro formCadastroCarro = new FormCadastroCarro();
-        formCadastroCarro.setVisible(true);
+        //FormCadastroCarro formCadastroCarro = new FormCadastroCarro();
+        //formCadastroCarro.setVisible(true);
 
-        /*Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
 
-        loginDao.inserirLogin(new Login("Rafael", "rafael@teste.com", "senha123", "2025-10-10", "2025-10-10"));
+        /*loginDao.inserirLogin(new Login("Rafael", "rafael@teste.com", "senha123", "2025-10-10", "2025-10-10"));
         loginDao.inserirLogin(new Login("Rafael Silva", "rafael.silva@gmail.com", "Raf@12345", "2025-07-01", ""));
         loginDao.inserirLogin(new Login("Camila Pereira", "camila.pereira@hotmail.com", "Camila!2025", "2025-07-02", ""));
         loginDao.inserirLogin(new Login("Lucas Oliveira", "lucas.oliveira@yahoo.com", "Luca$9876", "2025-07-03", ""));
@@ -35,7 +38,7 @@ public class Main {
         loginDao.inserirLogin(new Login("Eduardo Moreira", "eduardo.moreira@yahoo.com", "Eduardo@852", "2025-07-17", ""));
         loginDao.inserirLogin(new Login("Larissa Fernandes", "larissa.fernandes@gmail.com", "Larissa*963", "2025-07-18", ""));
         loginDao.inserirLogin(new Login("Caio Souza", "caio.souza@hotmail.com", "Caio#159", "2025-07-19", ""));
-        loginDao.inserirLogin(new Login("Sofia Barbosa", "sofia.barbosa@yahoo.com", "Sofia!357", "2025-07-20", ""));
+        loginDao.inserirLogin(new Login("Sofia Barbosa", "sofia.barbosa@yahoo.com", "Sofia!357", "2025-07-20", ""));*/
 
         int opcao;
         do {
@@ -47,7 +50,7 @@ public class Main {
             System.out.println("Informe uma opção: ");
             opcao = scan.nextInt();
             scan.nextLine();
-            switch (opcao){
+            switch (opcao) {
                 case 1:
                     Login login = new Login();
 
@@ -66,19 +69,28 @@ public class Main {
                     login.setDataCadastro("2025-10-10");
                     loginDao.inserirLogin(login);
                     break;
-                case 2:
-                    System.out.println("Lista de Usuarios");
+                case 2: {
+                    int quantidadedeUsuarios = loginDao.getLista().size();
 
-                    for (Login l : loginDao.getLista()){
-                        System.out.println("-------------------------------");
-                        System.out.println("Nome: "+l.getNome());
-                        System.out.println("Email: "+l.getEmail());
-                        System.out.println("Senha: "+l.getSenha());
-                        System.out.println("Ativo: "+l.isAtivo());
-                        System.out.println("Data Cadastro: "+l.getDataCadastro());
-                        System.out.println("Dara da ultima atualização: "+l.getDataAtualizacao());
+                    if (!loginDao.getLista().isEmpty()) {
+                        System.out.println("Lista de Usuarios");
+                        for (Login l : loginDao.getLista()) {
+                            System.out.println("-------------------------------");
+                            System.out.println("Nome: " + l.getNome());
+                            System.out.println("Email: " + l.getEmail());
+                            System.out.println("Senha: " + l.getSenha());
+                            System.out.println("Ativo: " + l.isAtivo());
+                            System.out.println("Data Cadastro: " + l.getDataCadastro());
+                            System.out.println("Dara da ultima atualização: " + l.getDataAtualizacao());
+                        }
+                        System.out.println("--------------------------------------");
+                        System.out.println("há " + quantidadedeUsuarios + " usuarios cadastrados no sistema!");
+                    } else {
+                        System.out.println("--------------------------------------");
+                        System.out.println("não há usuarios cadastrados no sistema");
                     }
                     break;
+                }
                 case 3:
                     System.out.println("Buscar por ID:");
                     break;
@@ -89,8 +101,6 @@ public class Main {
                     System.out.println("Erro, tente novamente!");
                     break;
             }
-        }while (opcao != 0);
-
-         */
+        } while (opcao != 0);
     }
 }

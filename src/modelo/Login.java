@@ -39,7 +39,10 @@ public class Login {
     }
 
     public void setId(int id) {
-        this.id = id;
+        if(id > 0) {
+            this.id = id;
+            throw new NumberFormatException("Id deve ser maior que 0!!");
+        }
     }
 
     public String getNome() {

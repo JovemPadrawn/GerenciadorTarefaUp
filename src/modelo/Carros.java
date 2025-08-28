@@ -6,18 +6,16 @@ public class Carros {
     public String corCarro;
     public int estoque;
     public double valor;
-    public String dataVenda;
 
     public Carros() {
     }
 
-    public Carros(int idCarro, String modeloCarro, String corCarro, int estoque, double valor, String dataVenda) {
+    public Carros(int idCarro, String modeloCarro, String corCarro, int estoque, double valor) {
         this.idCarro = idCarro;
         this.modeloCarro = modeloCarro;
         this.corCarro = corCarro;
         this.estoque = estoque;
         this.valor = valor;
-        this.dataVenda = dataVenda;
     }
 
     public int getIdCarro() {
@@ -58,13 +56,5 @@ public class Carros {
 
     public void setValor(double valor) {
         this.valor = valor;
-    }
-
-    public String getDataVenda() {
-        return dataVenda;
-    }
-
-    public void setDataVenda(String dataVenda) {
-        this.dataVenda = dataVenda;
     }
 }
