@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Locale;
+
 public class Login {
     public int id;
     public String nome;
@@ -9,16 +11,18 @@ public class Login {
     public String dataCadastro;
     public String dataAtualizacao;
 
+    //utilizado no main para cadastro de login
     public Login() {
     }
 
+    //utilizado no formulário de cadastro de login
     public Login(String nome, String email, String senha, String dataCadastro, String dataAtualizacao) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.ativo = true;
-        this.dataCadastro = dataCadastro;
-        this.dataAtualizacao = dataAtualizacao;
+        this.setNome(nome);
+        this.setEmail(email);
+        this.setSenha(senha);
+        this.setAtivo(true);//rever este campo no formulário
+        this.setDataCadastro(dataCadastro);
+        this.setDataAtualizacao(dataAtualizacao);
     }
 
     @Override
@@ -41,40 +45,60 @@ public class Login {
     public void setId(int id) {
         if(id > 0) {
             this.id = id;
-            throw new NumberFormatException("Id deve ser maior que 0!!");
+        }else {
+            throw new NumberFormatException("Id deve ser maior que zero!!!");
         }
+    }
+    public void setNome(String nome) {
+        if(nome == null || nome.isBlank()){
+            throw new IllegalArgumentException("O nome não pode ser vazio.");
+        }else {
+            this.nome = nome.trim();/*retira caso haja espaços antes e depois da string*/
+        }
+    }
+    public void setEmail(String email) {
+        if (email == null) {
+            throw new IllegalArgumentException(
+                    "O e-mail não pode estar ser nulo.");
+        }else if (email.isBlank()) {
+            throw new IllegalArgumentException(
+                    "O e-mail não pode estar vazio");
+        }else if (!email.contains("@")) {
+            throw new IllegalArgumentException(
+                    "O Formato do e-mail está incorreto, insira conforme xxxx@xxx.xxx.");
+        }else{
+            this.email = email.trim().toLowerCase();
+        }
+    }
+
+    public void setSenha(String senha) {
+        if(senha == null || senha.isBlank() || senha.length() < 4){
+            throw new IllegalArgumentException(
+                    "A senha não pode ser vazia, e deve ter no minimo 4 caracteres");
+        }else{
+            this.senha = senha.trim();
+        }
+
+    }
+
+    public void setAtivo(boolean ativo) {
+            this.ativo = ativo;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getEmail() {
         return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public boolean isAtivo() {
         return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
     }
 
     public String getDataCadastro() {

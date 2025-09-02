@@ -1,6 +1,7 @@
 package dao;
 
 import modelo.Login;
+import modelo.Tarefa;
 
 import java.util.ArrayList;
 
@@ -19,12 +20,13 @@ public class LoginDao {
         return lista.add(login);
     }
 
-    public void listar(){
-
-    }
-
-    public void buscarPorId(int id){
-
+    public Login buscarPorId(int id){
+        for (Login l : lista) {
+            if (l.getId() == id) {
+                return l;
+            }
+        }
+        return null;
     }
 
     public void atualizar(Login login){
