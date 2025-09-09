@@ -10,13 +10,20 @@ public class Main {
     static CarrosDao carrosDao = new CarrosDao();
 
     public static void main(String[] args) {
+
+        TelaPrincipalMenu telaMenu = new TelaPrincipalMenu();
+        telaMenu.setVisible(true);
+
+        //TelaPrincipalBotoes tpb = new TelaPrincipalBotoes();
+        //tpb.setVisible(true);
+
         //FormCadastroLogin formCadastroLogin = new FormCadastroLogin();
         //formCadastroLogin.setVisible(true);
 
         //FormCadastroCarro formCadastroCarro = new FormCadastroCarro();
         //formCadastroCarro.setVisible(true);
 
-        Scanner scan = new Scanner(System.in);
+        //Scanner scan = new Scanner(System.in);
 
         /*loginDao.inserirLogin(new Login("Rafael", "rafael@teste.com", "senha123", "2025-10-10", "2025-10-10"));
         loginDao.inserirLogin(new Login("Rafael Silva", "rafael.silva@gmail.com", "Raf@12345", "2025-07-01", ""));
@@ -40,7 +47,7 @@ public class Main {
         loginDao.inserirLogin(new Login("Caio Souza", "caio.souza@hotmail.com", "Caio#159", "2025-07-19", ""));
         loginDao.inserirLogin(new Login("Sofia Barbosa", "sofia.barbosa@yahoo.com", "Sofia!357", "2025-07-20", ""));*/
 
-        int opcao;
+        /*int opcao;
         do {
             System.out.println("---------------------------");
             System.out.println("1 - Cadastrar Usuario");
@@ -101,6 +108,6 @@ public class Main {
                     System.out.println("Erro, tente novamente!");
                     break;
             }
-        } while (opcao != 0);
+        } while (opcao != 0);*/
     }
 }

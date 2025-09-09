@@ -38,26 +38,34 @@ public class FormCadastroCarro extends JFrame{
         cadastrarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = Integer.parseInt(TF_ID.getText());
-                String modelo = TF_Modelo.getText();
-                String cor = TF_Cor.getText();
-                int estoque = Integer.parseInt(TF_Estoque.getText());
-                double valor= Double.parseDouble(TF_Valor.getText());
+                try {
+                    int id = Integer.parseInt(TF_ID.getText());
+                    String modelo = TF_Modelo.getText();
+                    String cor = TF_Cor.getText();
+                    int estoque = Integer.parseInt(TF_Estoque.getText());
+                    double valor = Double.parseDouble(TF_Valor.getText());
 
-                Carros carros = new Carros();
+                    Carros carros = new Carros();
 
-                carros.setIdCarro(id);
-                carros.setModeloCarro(modelo);
-                carros.setCorCarro(cor);
-                carros.setEstoque(estoque);
-                carros.setValor(valor);
+                    carros.setIdCarro(id);
+                    carros.setModeloCarro(modelo);
+                    carros.setCorCarro(cor);
+                    carros.setEstoque(estoque);
+                    carros.setValor(valor);
 
-                if(carrosDao.inserirCarro(carros)){
-                    JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!");
-                }else{
-                    JOptionPane.showMessageDialog(null, "Erro ao cadastrar carro!");
+                    if (carrosDao.inserirCarro(carros)) {
+                        JOptionPane.showMessageDialog(null, "Carro cadastrado com sucesso!");
+                        TF_ID.setText("");
+                        TF_Modelo.setText("");
+                        TF_Cor.setText("");
+                        TF_Estoque.setText("");
+                        TF_Valor.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Erro ao cadastrar carro!");
+                    }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Erro de formato! Verifique se os campos ID, Estoque e Valor contêm apenas números válidos.");
                 }
-
             }
         });
         listarButton.addActionListener(new ActionListener() {
