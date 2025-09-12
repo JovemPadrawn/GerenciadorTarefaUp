@@ -11,11 +11,16 @@ public class Main {
 
     public static void main(String[] args) {
 
+        loginDao.inserirLogin(new Login("admin", "admin@email.com", "1234", "2025-09-11", ""));
+
+        formTelaLogin telaLogin = new formTelaLogin();
+        telaLogin.setVisible(true);
+
         //TelaPrincipalMenu telaMenu = new TelaPrincipalMenu();
         //telaMenu.setVisible(true);
 
-        TelaPrincipalBotoes tpb = new TelaPrincipalBotoes();
-        tpb.setVisible(true);
+        //TelaPrincipalBotoes tpb = new TelaPrincipalBotoes();
+        //tpb.setVisible(true);
 
         //FormCadastroLogin formCadastroLogin = new FormCadastroLogin();
         //formCadastroLogin.setVisible(true);

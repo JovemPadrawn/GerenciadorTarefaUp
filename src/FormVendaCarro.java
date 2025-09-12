@@ -21,12 +21,12 @@ public class FormVendaCarro extends JFrame{
 
     public FormVendaCarro(CarrosDao carrosDao) {
         this.carrosDao = carrosDao;
+        this.vendaDao = new VendaDao();
         setContentPane(Principal2);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setTitle("Registro de Venda");
         setSize(500, 400);
         setLocationRelativeTo(null);
-        this.vendaDao = new VendaDao();
 
         carregarCarros();
 
