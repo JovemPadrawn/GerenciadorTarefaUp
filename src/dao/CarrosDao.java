@@ -18,4 +18,16 @@ public class CarrosDao {
     public boolean inserirCarro(Carros carros){
         return listaCarros.add(carros);
     }
+
+    public void darBaixaEstoque(int idCarro) {
+        for (Carros carro : listaCarros) {
+            if (carro.getIdCarro() == idCarro) {
+                int estoqueAtual = carro.getEstoque();
+                if (estoqueAtual > 0) {
+                    carro.setEstoque(estoqueAtual - 1);
+                }
+                return;
+            }
+        }
+    }
 }

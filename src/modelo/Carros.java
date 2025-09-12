@@ -57,4 +57,9 @@ public class Carros {
     public void setValor(double valor) {
         this.valor = valor;
     }
+
+    @Override
+    public String toString() {
+        return getModeloCarro() + " (Estoque: " + getEstoque() + ")";
+    }
 }

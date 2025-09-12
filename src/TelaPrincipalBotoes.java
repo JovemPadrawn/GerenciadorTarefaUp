@@ -7,8 +7,8 @@ public class TelaPrincipalBotoes extends JFrame{
     private JPanel Principal;
     private JButton usuariosButton;
     private JButton sairButton;
-    private JButton tarefasButton;
-    private JButton sobreButton;
+    private JButton CADASTROButton;
+    private JButton VENDASButton;
 
     public TelaPrincipalBotoes(){
         setContentPane(Principal);

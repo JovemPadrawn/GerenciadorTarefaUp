@@ -84,12 +84,12 @@ public class FormCadastroCarro extends JFrame{
                 }
             }
         });
-        /*Vendas.addActionListener(new ActionListener() {
+        Vendas.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                FormVendaCarro formVendaCarro = new FormVendaCarro();
+                FormVendaCarro formVendaCarro = new FormVendaCarro(carrosDao);
                 formVendaCarro.setVisible(true);
             }
-        });*/
+        });
     }
 }

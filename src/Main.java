@@ -11,11 +11,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        TelaPrincipalMenu telaMenu = new TelaPrincipalMenu();
-        telaMenu.setVisible(true);
+        //TelaPrincipalMenu telaMenu = new TelaPrincipalMenu();
+        //telaMenu.setVisible(true);
 
-        //TelaPrincipalBotoes tpb = new TelaPrincipalBotoes();
-        //tpb.setVisible(true);
+        TelaPrincipalBotoes tpb = new TelaPrincipalBotoes();
+        tpb.setVisible(true);
 
         //FormCadastroLogin formCadastroLogin = new FormCadastroLogin();
         //formCadastroLogin.setVisible(true);
