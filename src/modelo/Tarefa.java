@@ -13,8 +13,7 @@ public class Tarefa {
     // Construtores
     public Tarefa() {}
 
-    public Tarefa(String titulo, String descricao, boolean concluida,
-                  String nomeResponsavel, String dataInicio, String dataTermino, String local) {
+    public Tarefa(String titulo, String descricao, boolean concluida, String nomeResponsavel, String dataInicio, String dataTermino, String local) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.concluida = concluida;
@@ -24,7 +23,6 @@ public class Tarefa {
         this.local = local;
     }
 
-    // Getters e Setters
     public int getId() { return id; }
 
     public void setId(int id) {

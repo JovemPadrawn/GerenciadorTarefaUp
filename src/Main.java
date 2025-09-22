@@ -1,20 +1,37 @@
 import dao.CarrosDao;
 import dao.LoginDao;
+import dao.VendaDao;
 import modelo.Login;
+import modelo.Carros;
 
 import java.util.Scanner;
 
 public class Main {
-
-    static LoginDao loginDao = new LoginDao();
-    static CarrosDao carrosDao = new CarrosDao();
+    // usuario: admin , email: admin@email.com , senha: 1234
+    static final boolean MODO_DESENVOLVIMENTO = false; //true inicia sem login e false tem q por login pra acessar
 
     public static void main(String[] args) {
 
-        loginDao.inserirLogin(new Login("admin", "admin@email.com", "1234", "2025-09-11", ""));
+        LoginDao loginDao = new LoginDao();
+        CarrosDao carrosDao = new CarrosDao();
+        VendaDao vendaDao = new VendaDao();
 
-        formTelaLogin telaLogin = new formTelaLogin();
-        telaLogin.setVisible(true);
+        //coisas pra teste
+        loginDao.inserirLogin(new Login("admin", "admin@email.com", "1234", "2025-09-12", ""));
+        carrosDao.inserirCarro(new Carros(1, "Toyota Corolla", "Preto", 10, 150000.00));
+        carrosDao.inserirCarro(new Carros(2, "Honda Civic", "Branco", 5, 165000.00));
+
+        if (MODO_DESENVOLVIMENTO) {
+            System.out.println("AVISO: Sistema iniciado em modo desenvolvedor (n tem login).");
+            TelaPrincipalBotoes telaPrincipal = new TelaPrincipalBotoes(loginDao, carrosDao, vendaDao);
+            telaPrincipal.setVisible(true);
+        } else {
+            formTelaLogin telaLogin = new formTelaLogin(loginDao, carrosDao, vendaDao);
+            telaLogin.setVisible(true);
+        }
+
+        //formTelaLogin telaLogin = new formTelaLogin(loginDao, carrosDao, vendaDao);
+        //telaLogin.setVisible(true);
 
         //TelaPrincipalMenu telaMenu = new TelaPrincipalMenu();
         //telaMenu.setVisible(true);

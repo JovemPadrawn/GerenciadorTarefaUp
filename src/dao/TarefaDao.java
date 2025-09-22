@@ -14,12 +14,10 @@ public class TarefaDao {
         return lista;
     }
 
-    // Inserir
     public boolean inserirTarefa(Tarefa tarefa) {
         return lista.add(tarefa);
     }
 
-    // Buscar por ID
     public Tarefa buscarPorId(int id) {
         for (Tarefa t : lista) {
             if (t.getId() == id) {
@@ -38,7 +36,6 @@ public class TarefaDao {
         }
     }
 
-    // Atualizar apenas o status (concluída ou não)
     public void atualizarStatus(Tarefa tarefa, boolean concluida) {
         for (Tarefa t : lista) {
             if (t.getId() == tarefa.getId()) {

@@ -26,6 +26,33 @@ public class CarrosDao {
                 if (estoqueAtual > 0) {
                     carro.setEstoque(estoqueAtual - 1);
                 }
+            }
+        }
+    }
+    public boolean excluirCarro(int idCarro) {
+        return listaCarros.removeIf(carro -> carro.getIdCarro() == idCarro);
+    }
+    public boolean atualizarCarro(Carros carroAtualizado) {
+        for (int i = 0; i < listaCarros.size(); i++) {
+            if (listaCarros.get(i).getIdCarro() == carroAtualizado.getIdCarro()) {
+                listaCarros.set(i, carroAtualizado);
+                return true;
+            }
+        }
+        return false;
+    }
+    public Carros buscarCarroPorId(int idCarro) {
+        for (Carros carro : listaCarros) {
+            if (carro.getIdCarro() == idCarro) {
+                return carro;
+            }
+        }
+        return null;
+    }
+    public void aumentarEstoque(int idCarro) {
+        for (Carros carro : listaCarros) {
+            if (carro.getIdCarro() == idCarro) {
+                carro.setEstoque(carro.getEstoque() + 1);
                 return;
             }
         }

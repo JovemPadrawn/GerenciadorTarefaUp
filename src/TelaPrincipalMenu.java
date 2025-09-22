@@ -1,11 +1,15 @@
+import dao.LoginDao;
 import javax.swing.*;
-import javax.swing.text.html.FormView;
 import java.awt.*;
 
-public class TelaPrincipalMenu extends JFrame{
+public class TelaPrincipalMenu extends JFrame {
     private JPanel principal;
 
-    public TelaPrincipalMenu(){
+    private LoginDao loginDao;
+
+    public TelaPrincipalMenu(LoginDao loginDao) {
+        this.loginDao = loginDao;
+
         setContentPane(principal);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -24,7 +28,11 @@ public class TelaPrincipalMenu extends JFrame{
 
         JMenuItem cadastroUsuario = new JMenuItem("Novo Usuario");
         menuUsuario.add(cadastroUsuario);
-        menuUsuario.addActionListener(e -> new FormCadastroLogin());
+
+        cadastroUsuario.addActionListener(e -> {
+            FormCadastroLogin form = new FormCadastroLogin(this.loginDao);
+            form.setVisible(true);
+        });
 
         JMenuItem relatorioUsuario = new JMenuItem("Relatorio");
         menuUsuario.add(relatorioUsuario);

@@ -11,16 +11,14 @@ public class Login {
     public String dataCadastro;
     public String dataAtualizacao;
 
-    //utilizado no main para cadastro de login
     public Login() {
     }
 
-    //utilizado no formulário de cadastro de login
     public Login(String nome, String email, String senha, String dataCadastro, String dataAtualizacao) {
         this.setNome(nome);
         this.setEmail(email);
         this.setSenha(senha);
-        this.setAtivo(true);//rever este campo no formulário
+        this.setAtivo(true);
         this.setDataCadastro(dataCadastro);
         this.setDataAtualizacao(dataAtualizacao);
     }
@@ -53,7 +51,7 @@ public class Login {
         if(nome == null || nome.isBlank()){
             throw new IllegalArgumentException("O nome não pode ser vazio.");
         }else {
-            this.nome = nome.trim();/*retira caso haja espaços antes e depois da string*/
+            this.nome = nome.trim();
         }
     }
     public void setEmail(String email) {
@@ -65,7 +63,7 @@ public class Login {
                     "O e-mail não pode estar vazio");
         }else if (!email.contains("@")) {
             throw new IllegalArgumentException(
-                    "O Formato do e-mail está incorreto, insira conforme xxxx@xxx.xxx.");
+                    "O Formato do e-mail está incorreto,");
         }else{
             this.email = email.trim().toLowerCase();
         }
@@ -74,7 +72,7 @@ public class Login {
     public void setSenha(String senha) {
         if(senha == null || senha.isBlank() || senha.length() < 4){
             throw new IllegalArgumentException(
-                    "A senha não pode ser vazia, e deve ter no minimo 4 caracteres");
+                    "A senha não pode ser vazia e deve ter no minimo 4 caracteres");
         }else{
             this.senha = senha.trim();
         }
